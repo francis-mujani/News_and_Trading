@@ -1,0 +1,81 @@
+---
+# ------------------------------------------------------------------------------------
+# -- Docs: https://github.com/andre-marcos-perez/spark-standalone-cluster-on-docker --
+# ------------------------------------------------------------------------------------
+version: "3.6"
+volumes:
+  shared-workspace:
+    name: "hadoop-distributed-file-system"
+    driver: local
+services:
+  jupyterlab:
+    image: andreper/jupyterlab:2.1.4-spark-2.4.4
+    container_name: jupyterlab
+    ports:
+      - 8888:8888
+    volumes:
+      - shared-workspace:/opt/workspace
+  spark-master:
+    image: andreper/spark-master:2.4.4-hadoop-2.7
+    container_name: spark-master
+    links: 
+      - mongo
+    ports:
+      - 8080:8080
+      - 7077:7077
+    volumes:
+      - shared-workspace:/opt/workspace
+  spark-worker-1:
+    image: andreper/spark-worker:2.4.4-hadoop-2.7
+    container_name: spark-worker-1
+    environment:
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=512m
+    ports:
+      - 8081:8081
+    volumes:
+      - shared-workspace:/opt/workspace
+    depends_on:
+      - spark-master
+  spark-worker-2:
+    image: andreper/spark-worker:2.4.4-hadoop-2.7
+    container_name: spark-worker-2
+    environment:
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=512m
+    ports:
+      - 8082:8081
+    volumes:
+      - shared-workspace:/opt/workspace
+    depends_on:
+      - spark-master
+  mongo:
+    image: mongo:4.0.4
+    container_name: my-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - shared-workspace:/opt/workspace
+  flask:
+    build:
+      context: ./flask
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:5000
+    volumes:
+      - shared-workspace:/opt/workspace
+      - ./flask:/app
+
+  flask:
+    build:
+      context: ./flask
+      dockerfile: ./Dockerfile
+    container_name: flask
+    links: 
+      - mongo
+    ports:
+      - 3000:5000
+    volumes:
+      - ./flask:/app
+      - shared-workspace:/opt/workspace
+...
