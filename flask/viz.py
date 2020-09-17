@@ -1,30 +1,26 @@
-<<<<<<< HEAD
+
 from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.techindicators import TechIndicators
 from alpha_vantage.sectorperformance import SectorPerformances
 from alpha_vantage.cryptocurrencies import CryptoCurrencies
-=======
+
 #from alpha_vantage.timeseries import TimeSeries
 #from alpha_vantage.techindicators import TechIndicators
 #from alpha_vantage.sectorperformance import SectorPerformances
 #from alpha_vantage.cryptocurrencies import CryptoCurrencies
->>>>>>> 38e5e47926bdc43b745a6149b008facdf55d436b
+
 import matplotlib
 import matplotlib.pyplot as plt
 import os
 import pyspark
-<<<<<<< HEAD
 from pyspark.sql import  SparkSession
-=======
->>>>>>> 38e5e47926bdc43b745a6149b008facdf55d436b
+
 import pandas as pd
 import pylab 
 import scipy.stats as stats
 # Make plots bigger
 matplotlib.rcParams['figure.figsize'] = (20.0, 10.0)
 
-
-<<<<<<< HEAD
 
 ibm = pd.read_csv("../opt/workspace/ibm.csv")
 tsla = pd.read_csv("../opt/workspace/tsla.csv")
@@ -82,7 +78,6 @@ total = pd.read_csv("../opt/workspace/total.csv")
 # for compagny in compagnys:
 #     compagny.index = pd.to_datetime(compagny.date)
 #     compagny.drop(['date','_id'], axis=1, inplace=True)
-=======
 # liste compagnys
 
 
@@ -122,7 +117,7 @@ compagnys = [ibm,total, msft,tsla]
 for compagny in compagnys:
     compagny.index = pd.to_datetime(compagny.date)
     compagny.drop(['date','_id'], axis=1, inplace=True)
->>>>>>> 38e5e47926bdc43b745a6149b008facdf55d436b
+
 # viz_total = total.head()
 
 # plotting all data columns [close]
@@ -140,8 +135,5 @@ for compagny in compagnys:
 # for i in range(len(compagnys)):
 #     compagnys[i]['prix_chg'] = compagnys[i]['close'].pct_change()[1:]
 #     compagny.dropna(inplace=True, axis=0)
-<<<<<<< HEAD
 #     stats.probplot(compagnys[i]['prix_chg'], dist="norm", plot=pylab)
-=======
 #     stats.probplot(compagnys[i]['prix_chg'], dist="norm", plot=pylab)
->>>>>>> 38e5e47926bdc43b745a6149b008facdf55d436b
