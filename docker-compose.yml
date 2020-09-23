@@ -60,16 +60,6 @@ services:
     build:
       context: ./flask
       dockerfile: ./Dockerfile
-    ports:
-      - 3000:5000
-    volumes:
-      - shared-workspace:/opt/workspace
-      - ./flask:/app
-
-  flask:
-    build:
-      context: ./flask
-      dockerfile: ./Dockerfile
     container_name: flask
     links: 
       - mongo

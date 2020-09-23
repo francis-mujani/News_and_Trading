@@ -3,19 +3,13 @@ from flask_restful import Resource, Api, reqparse
 import numpy as np
 import pandas as pd
 import os
+import time
+
 
 # import dataset
-from viz import ibm, tsla, total, msft
+# from load import ibm, tsla, total, msft, aal
 
 
-
-# ibm = data['Ibm']
-# total = data['Total']
-# msft = data['Msft']
-# tsla = data['Tsla']
-close = np.array(ibm["close"])
-date = ibm["date"]
-listes = [ibm.head(), tsla.head(), total.head(), msft.head()]
 compagnys = ["Ibm", "Tsla", "Total", "Msft" ]
 # import netifaces
 # import platform
@@ -26,14 +20,14 @@ app = Flask(__name__)
 def index():
 
     # affichage
-    return render_template('index.html', title='home', listes=listes, compagnys = compagnys, close=close, date=date)
+    return render_template('index.html', title='home', compagnys = compagnys)
 
 
 @app.route('/ibm')
-def ibm():
+def Ibm():
 
     # affichage
-    return render_template('ibm.html', title='home', imb=ibm)
+    return render_template('ibm.html', title='home')
 
 
 # create port

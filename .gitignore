@@ -5,7 +5,7 @@
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
-build/workspace/api_key.py
+flask/api/api_key.py
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
