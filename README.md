@@ -18,26 +18,29 @@
 ##### D'abord cloné le projet en local
 ### 1. 
 ```bash
-# 1. cloné le projet  
+## 1. cloné le projet  
 git clone + 'url'
 ```
 ### 2.
 2.1. récuperer l'api_key sur l'adresse suivante: https://www.alphavantage.co/
 2.2. Ouvrez le terminal
+
 ```bash
-# Aller dans flask puis dans api
+## Aller dans flask puis dans api
 cd flask
-cd api
-# Créer un fichier "api_key.py" et coller le code ci-dessous en remplaçant les X par votre api_key que vous avez recuperez chez alphavantage
+cd 
+```
+
+## 1. créer un fichier dans le dossier api
+
+```bash
+touch api_key.py
+```
+2.3 Coller le code ci-dessous en remplaçant les X par votre api_key que vous avez recuperez chez alphavantage
+```bash
 API_KEY = "XXXXXXXXX"
 ```
 ### 3.
-```bash
-# Remettez vous dans le dossier flask et lancer le fichier load.py
-cd ..
-./load.py
-```
-### 4.
 ```bash
 # Remettez vous dans la racine du projet
 cd ..
