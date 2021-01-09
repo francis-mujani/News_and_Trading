@@ -36,7 +36,7 @@ cd
 ```bash
 touch api_key.py
 ```
-2.3 Coller le code ci-dessous en remplaçant les X par votre api_key que vous avez recuperez chez alphavantage
+2.3 Coller le code ci-dessous en remplaçant les X par votre api_key que vous avez recuperez chez alphavantage 
 ```bash
 API_KEY = "XXXXXXXXX"
 ```
